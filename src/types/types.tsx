@@ -1,5 +1,5 @@
-import axios from "axios";
-import { history } from "umi";
+import axios from 'axios';
+import { history } from 'umi';
 
 interface QAClientInterface {
   fetch: (url?: string) => Promise<any>;
@@ -30,24 +30,24 @@ class QAClient implements QAClientInterface {
     let fetchUrl = url ? url : this.fetchUrl;
     let code: string | string[] | null = history.location.query
       ? history.location.query.code
-      : "";
+      : '';
     return axios.get(`${fetchUrl}?course_code=${code}`);
   }
 
   async submit(type: string, payload: object, url?: string): Promise<any> {
     //确定data格式
     let data =
-      type === "addQuestion"
+      type === 'addQuestion'
         ? {
             course_code: history.location.query
-              ? history.location.query.code + ""
-              : "",
-            question_text: payload.text + "",
+              ? history.location.query.code + ''
+              : '',
+            question_text: payload.text + '',
           }
         : {
             course_code: history.location.query
               ? history.location.query.code
-              : "",
+              : '',
             question_id: payload.id,
             answer_text: payload.text,
           };
@@ -58,7 +58,7 @@ class QAClient implements QAClientInterface {
       //return axios.get(`${this.fetchUrl}?course_code=${payload.code}`);
       return this.fetch.call(this);
     } catch (err) {
-      console.log("post提交错误", err);
+      console.log('post提交错误', err);
       return Promise.reject(err);
     }
   }

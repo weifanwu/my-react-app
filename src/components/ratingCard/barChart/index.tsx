@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "../index.css";
+import React from 'react';
+import styles from '../index.css';
 import {
   BarChart,
   Bar,
@@ -8,8 +8,8 @@ import {
   Tooltip,
   LabelList,
   Legend,
-} from "recharts";
-import _ from "lodash";
+} from 'recharts';
+import _ from 'lodash';
 
 /**
  * rating部分右侧的柱状图
@@ -44,8 +44,8 @@ const Diagram = (props: any) => {
   const tipContent = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       //console.log(payload[0].payload['percentage'])
-      let name = payload[0].payload["orgin"];
-      let percent = payload[0].payload["percentage"];
+      let name = payload[0].payload['orgin'];
+      let percent = payload[0].payload['percentage'];
       return (
         <div className={styles.tipContent}>
           <p className={styles.grade}>{`Grade: ${label.toUpperCase()}`}</p>
@@ -70,13 +70,13 @@ const Diagram = (props: any) => {
           left: 20,
           bottom: 5,
         }}
-        barGap={"9"}
-        barSize={"1"}
-        barCategoryGap={"9"}
+        barGap={'9'}
+        barSize={'1'}
+        barCategoryGap={'9'}
       >
         <XAxis
           dataKey="name"
-          style={{ fontSize: "xx-small" }}
+          style={{ fontSize: 'xx-small' }}
           interval={0}
           angle={0}
           dx={1}
@@ -93,7 +93,7 @@ const Diagram = (props: any) => {
           <LabelList
             dataKey="topLabel"
             position="top"
-            style={{ fontSize: "xx-small", color: "#755ebf" }}
+            style={{ fontSize: 'xx-small', color: '#755ebf' }}
           />
         </Bar>
       </BarChart>

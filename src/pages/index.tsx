@@ -1,7 +1,7 @@
-import React from "react";
-import styles from "./index.css";
-import SearchBar from "../components/searchBar";
-import Recommandation from "@/components/recommandation";
+import React from 'react';
+import styles from './index.css';
+import SearchBar from '../components/searchBar';
+import Recommandation from '@/components/recommandation';
 
 /**
  * 主页面page
@@ -12,12 +12,12 @@ function homePage(props: any) {
     <div className={styles.contentWrapper}>
       <div className={styles.logo}>
         <img
-          src={require("../assets/logo.jpeg")}
+          src={require('../assets/logo.jpeg')}
           alt="logo icon"
           width="62px"
           height="62px"
         />
-        <p style={{ margin: 0, color: "white", fontSize: "38pt" }}>
+        <p style={{ margin: 0, color: 'white', fontSize: '38pt' }}>
           Course Rating
         </p>
       </div>

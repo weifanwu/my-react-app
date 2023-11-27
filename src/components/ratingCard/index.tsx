@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { connect } from "dva";
-import axios from "axios";
-import styles from "./index.css";
-import ThreeBubbles from "./threeBubbles";
-import Diagram from "./barChart";
-import { Select, Divider } from "antd";
-import Comment from "./comments";
-import { Button, Modal, Form, Input, Spin } from "antd";
+import React, { useEffect, useState } from 'react';
+import { connect } from 'dva';
+import axios from 'axios';
+import styles from './index.css';
+import ThreeBubbles from './threeBubbles';
+import Diagram from './barChart';
+import { Select, Divider } from 'antd';
+import Comment from './comments';
+import { Button, Modal, Form, Input, Spin } from 'antd';
 
 /**
  * courseInfo中间content部分的course rating部分
@@ -14,7 +14,7 @@ import { Button, Modal, Form, Input, Spin } from "antd";
  */
 const RatingCard = (props: any) => {
   const { professors, courseCode, gradeMap, updateBreakdown } = props;
-  const [currentProfessor, setCurrentProfessor] = useState("All");
+  const [currentProfessor, setCurrentProfessor] = useState('All');
   const [loading, setLoading] = useState(false);
   const [add, setAdd] = useState(false);
   const [comments, setComments] = useState(new Array<JSX.Element>());
@@ -65,9 +65,9 @@ const RatingCard = (props: any) => {
       let renderContent = qaListResponse.map((x: any) => {
         return (
           <Comment
-            instructor={x["instructor"]}
-            quarter={x["quarter"]}
-            comment={x["comment"]}
+            instructor={x['instructor']}
+            quarter={x['quarter']}
+            comment={x['comment']}
           />
         );
       });
@@ -80,16 +80,16 @@ const RatingCard = (props: any) => {
       try {
         console.log(courseCode);
         let response = await fetch(
-          "https://uwise-back-end.herokuapp.com/getReview?courseCode=" +
-            courseCode
+          'https://uwise-back-end.herokuapp.com/getReview?courseCode=' +
+            courseCode,
         );
         console.log(response);
         let reviews = await response.json();
         console.log(reviews);
         handleRenderContent(reviews);
-        console.log("Enter" + courseCode);
+        console.log('Enter' + courseCode);
       } catch (err) {
-        console.log("QA列表获取失败", err);
+        console.log('QA列表获取失败', err);
       }
     })();
   }, [courseCode]);
@@ -98,10 +98,10 @@ const RatingCard = (props: any) => {
     if (courseCode.length && currentProfessor.length) {
       axios
         .get(
-          "https://capstone2022-342303.uw.r.appspot.com/course/professor/info?course_code=" +
+          'https://capstone2022-342303.uw.r.appspot.com/course/professor/info?course_code=' +
             courseCode +
-            "&professor_name=" +
-            currentProfessor
+            '&professor_name=' +
+            currentProfessor,
         )
         .then((Response) => {
           //console.log(Response.data.data);
@@ -135,12 +135,12 @@ const RatingCard = (props: any) => {
         reviewed: false,
       };
       const response = await fetch(
-        "https://uwise-back-end.herokuapp.com/addComment",
+        'https://uwise-back-end.herokuapp.com/addComment',
         {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(review),
-        }
+        },
       );
       setAdd(!add);
       setVisibility(false);
@@ -158,9 +158,9 @@ const RatingCard = (props: any) => {
         <div className={styles.content}>
           <ThreeBubbles
             renderData={[
-              ["Overall Rating", state.overall_rating + " / 5"],
-              ["Average GPA", state.average_gpa],
-              ["Hours Per Week", state.hours],
+              ['Overall Rating', state.overall_rating + ' / 5'],
+              ['Average GPA', state.average_gpa],
+              ['Hours Per Week', state.hours],
             ]}
           />
           <div>
@@ -173,7 +173,7 @@ const RatingCard = (props: any) => {
       </div>
       <div className={styles.container}>
         <p
-          style={{ alignSelf: "flex-end", fontSize: "x-small", opacity: "0.4" }}
+          style={{ alignSelf: 'flex-end', fontSize: 'x-small', opacity: '0.4' }}
         >
           Data collected from UW for 2016-2021
         </p>
@@ -231,7 +231,7 @@ const mapStateProps = (state: any) => {
 const actionCreator = {
   updateBreakdown: (payload: {}) => {
     return {
-      type: "courseInfo/updateBreakdown",
+      type: 'courseInfo/updateBreakdown',
       payload,
     };
   },

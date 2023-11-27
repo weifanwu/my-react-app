@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Tabs } from "antd";
-import axios from "axios";
-import styles from "./index.css";
-import Rol from "./rol";
+import React, { useEffect, useState } from 'react';
+import { Tabs } from 'antd';
+import axios from 'axios';
+import styles from './index.css';
+import Rol from './rol';
 /**
  *
  * @param props
@@ -19,7 +19,7 @@ function Recommandation(props: any) {
 
   useEffect(() => {
     axios
-      .get("https://capstone2022-342303.uw.r.appspot.com/course/recommendation")
+      .get('https://capstone2022-342303.uw.r.appspot.com/course/recommendation')
       .then((res) => {
         setContent(res.data.data);
       });
@@ -31,15 +31,15 @@ function Recommandation(props: any) {
         defaultActiveKey="1"
         size="large"
         tabBarGutter={50}
-        tabBarStyle={{ marginBottom: "2vw", color: "white" }}
+        tabBarStyle={{ marginBottom: '2vw', color: 'white' }}
       >
-        <TabPane tab="GPA Booster" key="1" style={{ color: "white" }}>
+        <TabPane tab="GPA Booster" key="1" style={{ color: 'white' }}>
           <Rol courses={content.gpa_booster} />
         </TabPane>
-        <TabPane tab="Popular Courses" key="2" style={{ color: "white" }}>
+        <TabPane tab="Popular Courses" key="2" style={{ color: 'white' }}>
           <Rol courses={content.popular_courses} />
         </TabPane>
-        <TabPane tab="Tech" key="3" style={{ color: "white" }}>
+        <TabPane tab="Tech" key="3" style={{ color: 'white' }}>
           <Rol courses={content.tech} />
         </TabPane>
       </Tabs>

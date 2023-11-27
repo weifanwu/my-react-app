@@ -1,9 +1,9 @@
-import React from "react";
-import { AutoComplete, Input } from "antd";
-import { connect } from "dva";
-import { useState } from "react";
-import { history } from "umi";
-import axios from "axios";
+import React from 'react';
+import { AutoComplete, Input } from 'antd';
+import { connect } from 'dva';
+import { useState } from 'react';
+import { history } from 'umi';
+import axios from 'axios';
 
 const { Search } = Input;
 
@@ -12,7 +12,7 @@ function SearchBar(props: any) {
     courseList,
     width,
     update,
-    size = "large",
+    size = 'large',
     courseMap,
     updateCourseMap,
     updateCourseCode,
@@ -21,8 +21,8 @@ function SearchBar(props: any) {
   function searchHandler(val: string) {
     axios
       .get(
-        "https://capstone2022-342303.uw.r.appspot.com/course/search?query=" +
-          val
+        'https://capstone2022-342303.uw.r.appspot.com/course/search?query=' +
+          val,
       )
       .then((Response) => {
         let fetched: any[] = Response.data.data;
@@ -39,21 +39,21 @@ function SearchBar(props: any) {
 
   function redirect(val: string, obj?: Object): void {
     updateCourseCode(courseMap.get(val));
-    history.push("/courseInfo/detail?code=" + courseMap.get(val));
+    history.push('/courseInfo/detail?code=' + courseMap.get(val));
   }
 
   return (
-    <div style={{ width: "100%" }} className="barInner">
+    <div style={{ width: '100%' }} className="barInner">
       <AutoComplete
         onSelect={redirect}
         onSearch={searchHandler}
-        style={{ width: width, borderRadius: "25px" }}
+        style={{ width: width, borderRadius: '25px' }}
         dataSource={courseList}
       >
         <Search
           placeholder="Search for course titles e.g MATH 124"
           size={size}
-          style={{ borderRadius: "10px" }}
+          style={{ borderRadius: '10px' }}
         />
       </AutoComplete>
     </div>
@@ -70,19 +70,19 @@ const mapStateProps = (state: any) => {
 const actionCreator = {
   update: (payload: string[]) => {
     return {
-      type: "courseInfo/update",
+      type: 'courseInfo/update',
       payload,
     };
   },
   updateCourseMap: (payload: Map<any, any>) => {
     return {
-      type: "courseInfo/updateCourseMap",
+      type: 'courseInfo/updateCourseMap',
       payload,
     };
   },
   updateCourseCode: (payload: string) => {
     return {
-      type: "courseInfo/updateCourseCode",
+      type: 'courseInfo/updateCourseCode',
       payload,
     };
   },

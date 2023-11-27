@@ -1,9 +1,9 @@
-import React from "react";
-import { Progress } from "antd";
-import styles from "../index.css";
+import React from 'react';
+import { Progress } from 'antd';
+import styles from '../index.css';
 
 const ProgressBar = (props: any) => {
-  const { value, size = 10, text = "test" } = props;
+  const { value, size = 10, text = 'test' } = props;
 
   function calculate(rate: number): number {
     return Math.floor((rate / 5) * 100);
@@ -12,7 +12,7 @@ const ProgressBar = (props: any) => {
   return (
     <div className={styles.barContainer}>
       <p
-        style={{ margin: "0 0.5vw 0", fontSize: "small", width: "30vw" }}
+        style={{ margin: '0 0.5vw 0', fontSize: 'small', width: '30vw' }}
       >{`${text}`}</p>
       <Progress
         type="line"
@@ -23,9 +23,9 @@ const ProgressBar = (props: any) => {
       />
       <p
         style={{
-          margin: "0 1vw 0",
-          fontSize: "xx-small",
-          fontWeight: "lighter",
+          margin: '0 1vw 0',
+          fontSize: 'xx-small',
+          fontWeight: 'lighter',
         }}
       >{`${value}/5`}</p>
     </div>

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { IoChatbubbleEllipsesOutline, IoEyeOutline } from "react-icons/io5";
-import styles from "./index.css";
-import { Divider, Input, Button } from "antd";
-import { divide } from "lodash";
-import QAClient from "@/types/types";
+import React, { useState } from 'react';
+import { IoChatbubbleEllipsesOutline, IoEyeOutline } from 'react-icons/io5';
+import styles from './index.css';
+import { Divider, Input, Button } from 'antd';
+import { divide } from 'lodash';
+import QAClient from '@/types/types';
 
 /**
  * 单个的QA问答卡片组件
@@ -16,7 +16,7 @@ import QAClient from "@/types/types";
 
 function QACard(props: any) {
   const {
-    questionText = "服务器端数据有问题",
+    questionText = '服务器端数据有问题',
     answers = [],
     id,
     handleRenderContent,
@@ -25,15 +25,15 @@ function QACard(props: any) {
   const { TextArea } = Input;
   let answerList: JSX.Element[] = [];
   let [inputOn, switcInutOn] = useState(false);
-  let [answerText, setAnswerText] = useState("");
+  let [answerText, setAnswerText] = useState('');
   let [answerLength, setAnswerLength] = useState(0);
   let qa = new QAClient(
-    "https://capstone2022-342303.uw.r.appspot.com/course/qa/list",
-    "https://capstone2022-342303.uw.r.appspot.com/course/answer/add"
+    'https://capstone2022-342303.uw.r.appspot.com/course/qa/list',
+    'https://capstone2022-342303.uw.r.appspot.com/course/answer/add',
   );
 
   //获取渲染内容列表
-  if (answers[0].answer_text === "") {
+  if (answers[0].answer_text === '') {
     answerList = [];
   } else {
     for (let i = 0; i < answers.length; i++) {
@@ -42,9 +42,9 @@ function QACard(props: any) {
           <p className={styles.boldText}>A: </p>
           <div
             style={{
-              display: "flex",
-              justifyContent: "space-between",
-              width: "100%",
+              display: 'flex',
+              justifyContent: 'space-between',
+              width: '100%',
             }}
           >
             <div className={styles.singleAnswerText}>
@@ -54,20 +54,20 @@ function QACard(props: any) {
               {answers[i].answered_at}
             </div>
           </div>
-        </div>
+        </div>,
       );
       if (i < answers.length - 1) {
         answerList.push(
           <div
             style={{
-              width: "94%",
-              position: "relative",
-              right: "-1.5vw",
-              top: "-0.6vw",
+              width: '94%',
+              position: 'relative',
+              right: '-1.5vw',
+              top: '-0.6vw',
             }}
           >
-            <Divider style={{ marginBottom: "0px", marginTop: "4px" }} />
-          </div>
+            <Divider style={{ marginBottom: '0px', marginTop: '4px' }} />
+          </div>,
         );
       }
     }
@@ -85,11 +85,11 @@ function QACard(props: any) {
     inputBox = <div></div>;
     relpyButton = (
       <a
-        style={{ display: "flex", alignItems: "center", marginTop: "2vh" }}
+        style={{ display: 'flex', alignItems: 'center', marginTop: '2vh' }}
         onClick={switchInputHandler}
       >
-        <IoChatbubbleEllipsesOutline />{" "}
-        <span style={{ paddingLeft: "5px" }}>Reply</span>
+        <IoChatbubbleEllipsesOutline />{' '}
+        <span style={{ paddingLeft: '5px' }}>Reply</span>
       </a>
     );
   } else {
@@ -106,7 +106,7 @@ function QACard(props: any) {
             rows={4}
             onChange={(e) => {
               setAnswerText(e.target.value);
-              setAnswerLength(e.target.value.split(" ").length);
+              setAnswerLength(e.target.value.split(' ').length);
             }}
           />
         ) : (
@@ -116,29 +116,29 @@ function QACard(props: any) {
               showCount={{ formatter: format }}
               value={answerText}
               rows={4}
-              style={{ border: "2.5px solid #ef0000" }}
+              style={{ border: '2.5px solid #ef0000' }}
               onChange={(e) => {
                 setAnswerText(e.target.value);
-                setAnswerLength(e.target.value.split(" ").length);
+                setAnswerLength(e.target.value.split(' ').length);
               }}
             />
-            <div style={{ color: "red" }}>200 words maximum</div>
+            <div style={{ color: 'red' }}>200 words maximum</div>
           </div>
         )}
-        <div style={{ marginTop: "1vh" }}>
+        <div style={{ marginTop: '1vh' }}>
           {answerText && answerLength <= 200 ? (
             <Button
               type="default"
               shape="round"
               size="small"
               onClick={() => {
-                qa.submit("addAnswer", {
+                qa.submit('addAnswer', {
                   id: id,
                   text: answerText,
                 })
                   .then((res) => {
                     handleRenderContent(res);
-                    setAnswerText("");
+                    setAnswerText('');
                     setAnswerLength(0);
                   })
                   .catch((err) => {
@@ -158,10 +158,10 @@ function QACard(props: any) {
     );
     relpyButton = (
       <a
-        style={{ display: "flex", alignItems: "center", margin: "2vh 0px 1vh" }}
+        style={{ display: 'flex', alignItems: 'center', margin: '2vh 0px 1vh' }}
         onClick={switchInputHandler}
       >
-        <IoEyeOutline /> <span style={{ paddingLeft: "5px" }}>Collapse</span>
+        <IoEyeOutline /> <span style={{ paddingLeft: '5px' }}>Collapse</span>
       </a>
     );
   }
@@ -171,7 +171,7 @@ function QACard(props: any) {
       <div className={styles.container}>
         <span className={styles.boldText}>Q:</span>
         <span className={styles.questionText}>{questionText}</span>
-        <Divider style={{ margin: "0.7vh auto 0.7vh" }} />
+        <Divider style={{ margin: '0.7vh auto 0.7vh' }} />
         {answerList}
         {relpyButton}
         {inputBox}
@@ -182,8 +182,8 @@ function QACard(props: any) {
       <div className={styles.container}>
         <span className={styles.boldText}>Q:</span>
         <span className={styles.questionText}>{questionText}</span>
-        <Divider style={{ margin: "0.7vh auto 0.7vh" }} />
-        <div style={{ width: "14vw", margin: "4vh auto" }}>
+        <Divider style={{ margin: '0.7vh auto 0.7vh' }} />
+        <div style={{ width: '14vw', margin: '4vh auto' }}>
           <Button
             type="primary"
             shape="round"

@@ -1,6 +1,6 @@
-import React from "react";
-import styles from "../index.css";
-import { Row, Col, Popover } from "antd";
+import React from 'react';
+import styles from '../index.css';
+import { Row, Col, Popover } from 'antd';
 
 /**
  * rating部分左侧那三个气泡
@@ -19,14 +19,14 @@ const ThreeBubbles = (props: any) => {
           <div className={styles.ratingItem}>
             <p
               style={{
-                textAlign: "center",
-                fontSize: "x-small",
-                color: "#3A0085",
-                marginRight: "0",
+                textAlign: 'center',
+                fontSize: 'x-small',
+                color: '#3A0085',
+                marginRight: '0',
               }}
             >
               {val[0]}
-              {val[0] == "Overall Rating" ? (
+              {val[0] == 'Overall Rating' ? (
                 <Popover
                   content={
                     <p>
@@ -36,8 +36,8 @@ const ThreeBubbles = (props: any) => {
                   }
                 >
                   <img
-                    src={require("@/assets/information-sign.png")}
-                    style={{ marginLeft: "3px" }}
+                    src={require('@/assets/information-sign.png')}
+                    style={{ marginLeft: '3px' }}
                     alt="logo icon"
                     width="10px"
                     height="10px"
@@ -49,10 +49,10 @@ const ThreeBubbles = (props: any) => {
             </p>
             <p
               style={{
-                textAlign: "center",
-                fontSize: "large",
-                transform: "translateY(-25%)",
-                color: "#3A0085",
+                textAlign: 'center',
+                fontSize: 'large',
+                transform: 'translateY(-25%)',
+                color: '#3A0085',
               }}
             >
               {val[1]}

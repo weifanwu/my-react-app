@@ -1,8 +1,8 @@
-import { Divider } from "antd";
-import { AiOutlineUser, AiOutlineClockCircle } from "react-icons/ai";
-import { useState } from "react";
-import "./index.css";
-import { WithContext as ReactTags } from "react-tag-input";
+import { Divider } from 'antd';
+import { AiOutlineUser, AiOutlineClockCircle } from 'react-icons/ai';
+import { useState } from 'react';
+import './index.css';
+import { WithContext as ReactTags } from 'react-tag-input';
 
 function Comment(props) {
   return (

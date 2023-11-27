@@ -1,61 +1,61 @@
-import React from "react";
-import { connect } from "dva";
-import { Row, Col } from "antd";
-import styles from "./index.css";
-import ProgressBar from "./progressBar";
+import React from 'react';
+import { connect } from 'dva';
+import { Row, Col } from 'antd';
+import styles from './index.css';
+import ProgressBar from './progressBar';
 
 const BreakDown = (props: any) => {
   const { breakdown } = props;
-  console.log(breakdown["the_course_as_a_whole"]);
+  console.log(breakdown['the_course_as_a_whole']);
   return (
     <div className={styles.bars}>
-      <h2 style={{ margin: "0 0 4vh" }}>Rating Breakdown</h2>
+      <h2 style={{ margin: '0 0 4vh' }}>Rating Breakdown</h2>
       <div className={styles.twoBarsRow}>
         <ProgressBar
-          value={breakdown["instructor_contribution"]}
+          value={breakdown['instructor_contribution']}
           size={23}
-          text={"Instructor’s contribution"}
+          text={'Instructor’s contribution'}
         />
         <ProgressBar
-          value={breakdown["teaching_effectiveness"]}
+          value={breakdown['teaching_effectiveness']}
           size={23}
-          text={"Teaching effectiveness"}
+          text={'Teaching effectiveness'}
         />
       </div>
       <div className={styles.twoBarsRow}>
         <ProgressBar
-          value={breakdown["usefulness_of_course_content"]}
+          value={breakdown['usefulness_of_course_content']}
           size={23}
-          text={"Usefulness of course content"}
+          text={'Usefulness of course content'}
         />
         <ProgressBar
-          value={breakdown["course_organization"]}
+          value={breakdown['course_organization']}
           size={23}
-          text={"Course organization"}
-        />
-      </div>
-      <div className={styles.twoBarsRow}>
-        <ProgressBar
-          value={breakdown["clarity_of_concept_explanation"]}
-          size={23}
-          text={"Concept explanation"}
-        />
-        <ProgressBar
-          value={breakdown["reasonable_assigned_work"]}
-          size={23}
-          text={"Reasonable assigned work"}
+          text={'Course organization'}
         />
       </div>
       <div className={styles.twoBarsRow}>
         <ProgressBar
-          value={breakdown["availability_of_extra_help"]}
+          value={breakdown['clarity_of_concept_explanation']}
           size={23}
-          text={"Availability of extra help"}
+          text={'Concept explanation'}
         />
         <ProgressBar
-          value={breakdown["grading_techniques"]}
+          value={breakdown['reasonable_assigned_work']}
           size={23}
-          text={"Grading techniques"}
+          text={'Reasonable assigned work'}
+        />
+      </div>
+      <div className={styles.twoBarsRow}>
+        <ProgressBar
+          value={breakdown['availability_of_extra_help']}
+          size={23}
+          text={'Availability of extra help'}
+        />
+        <ProgressBar
+          value={breakdown['grading_techniques']}
+          size={23}
+          text={'Grading techniques'}
         />
       </div>
     </div>
