@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "start": "export NODE_OPTIONS=--openssl-legacy-provider && umi dev",
+    "start": "yarn config set ignore-engines true && export NODE_OPTIONS=--openssl-legacy-provider && umi dev",
     "build": "export NODE_OPTIONS=--openssl-legacy-provider && umi build",
     "webpack": "umi webpack",
     "postinstall": "umi generate tmp",
