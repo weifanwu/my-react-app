@@ -30,7 +30,6 @@
     "react-dom": "17.x",
     "react-icons": "^4.8.0",
     "react-tag-input": "^6.8.1",
-    "react-vis": "^1.11.7",
     "recharts": "^2.1.9",
     "redux-logger": "^3.0.6",
     "umi": "^3.5.21"
